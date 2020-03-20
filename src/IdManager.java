@@ -1,5 +1,4 @@
-public class MenuManager{
-
+public class IdManager{
 	public static void main(String[] args) {
 		System.out.println("*** Id Management System Menu ***");
 		System.out.println("1. Add Id");
