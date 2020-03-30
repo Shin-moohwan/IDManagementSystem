@@ -37,10 +37,10 @@ public class IdManager{
 		System.out.print("Your Id:");
 		String yourid = input.nextLine();
 		System.out.print("Id Site:");
-		String idname = input.nextLine();
+		String idsite = input.nextLine();
 		System.out.print("Id password:");
 		String password = input.nextLine();
-		System.out.println(idname);
+		System.out.println(yourid);
 	}
 	public static void deleteId() {
 		Scanner input = new Scanner(System.in);
