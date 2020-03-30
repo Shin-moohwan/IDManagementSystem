@@ -36,7 +36,7 @@ public class IdManager{
 		Scanner input = new Scanner(System.in);
 		System.out.print("Your Id:");
 		String yourid = input.nextLine();
-		System.out.print("Id Name:");
+		System.out.print("Id Site:");
 		String idname = input.nextLine();
 		System.out.print("Id password:");
 		String password = input.nextLine();
