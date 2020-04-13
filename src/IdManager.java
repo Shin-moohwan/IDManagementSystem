@@ -73,7 +73,7 @@ public class IdManager {
 					else if (num == 4) {
 						System.out.print("Id number:");
 						id.idnumber = input.nextInt();
-					}
+					} 
 					else {
 						continue;
 					}
