@@ -32,10 +32,6 @@ public class SometimesuseId extends Id {
 
 			}
 		}
-		
-		System.out.print("Id Site:");
-		String idsite = input.next();
-		this.setIdsite(idsite);
 
 		System.out.print("Id password:");
 		String password = input.next();
