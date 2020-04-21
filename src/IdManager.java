@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import id.Id;
+import id.SometimesuseId;
+
 public class IdManager {
 	ArrayList<Id> ids = new ArrayList<Id>();
 	Scanner input;
@@ -9,16 +12,31 @@ public class IdManager {
 	}
 
 	public void addId() {
-		Id id = new Id();
-		System.out.print("Id number:");
-		id.idnumber = input.nextInt();
-		System.out.print("Your Id:");
-		id.yourid = input.next();
-		System.out.print("Id Site:");
-		id.idsite = input.next();
-		System.out.print("Id password:");
-		id.password = input.next();
-		ids.add(id);
+		int kind = 0;
+		Id id;
+		while (kind != 1 && kind != 2) {
+			System.out.print("1 for often use Id, ");
+			System.out.print("2 for sometimes use Id, ");
+			System.out.print("Select num for Id Kind between 1 and 2:");
+			kind = input.nextInt();
+			if (kind == 1) {
+				id = new Id();
+				id.getUserInput(input);
+				ids.add(id);
+				break;
+			}
+			else if (kind == 2) {
+				id = new SometimesuseId();	
+				id.getUserInput(input);
+				ids.add(id);
+				break;
+			}
+			else {
+				System.out.print("Select num for Id Kind between 1 and 2:");
+			}
+		}
+
+
 	}
 
 	public void deleteId() {
@@ -26,7 +44,7 @@ public class IdManager {
 		int idnumber = input.nextInt();
 		int index = -1;
 		for (int i = 0; i<ids.size(); i++) {
-			if (ids.get(i).idnumber == idnumber) {
+			if (ids.get(i).getIdnumber() == idnumber) {
 				index = i;
 				break;
 			}
@@ -47,7 +65,7 @@ public class IdManager {
 		int idnumber = input.nextInt();
 		for (int i = 0; i<ids.size(); i++) {
 			Id id = ids.get(i);
-			if (id.idnumber == idnumber) {
+			if (id.getIdnumber() == idnumber) {
 				int num = -1;
 				while (num != 5) {
 					System.out.println("## Id Info Edit Menu ##");
@@ -60,19 +78,23 @@ public class IdManager {
 					num = input.nextInt();
 					if (num == 1) {
 						System.out.print("Your Id:");
-						id.yourid = input.next();
+						String yourid = input.next();
+						id.setYourid(yourid);
 					}
 					else if (num == 2) {
 						System.out.print("Id Site:");
-						id.idsite = input.next();
+						String idsite = input.next();
+						id.setIdsite(idsite);
 					}
 					else if (num == 3) {
 						System.out.print("Id password:");
-						id.password = input.next();
+						String password = input.next();
+						id.setPassword(password);
 					}
 					else if (num == 4) {
 						System.out.print("Id number:");
-						id.idnumber = input.nextInt();
+						int idnumber1 = input.nextInt();
+						id.setIdnumber(idnumber1);
 					} 
 					else {
 						continue;
@@ -85,6 +107,7 @@ public class IdManager {
 	public void viewIds() {
 		//		System.out.print("Your Id number:");
 		//		int idnumber = input.nextInt();
+		System.out.println("# of registered Ids:" + ids.size());
 		for (int i = 0; i<ids.size(); i++) {
 			ids.get(i).printInfo();
 		}
