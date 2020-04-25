@@ -3,6 +3,10 @@ package id;
 import java.util.Scanner;
 
 public class SometimesuseId extends Id {
+	
+	public SometimesuseId(IdKind kind) {
+		super(kind);
+	}
 
 	public void getUserInput(Scanner input) {
 		System.out.print("Id number:");

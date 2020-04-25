@@ -8,22 +8,33 @@ public class Id {
 	protected int idnumber;
 	protected String idsite;
 	protected String password;
-	
+
 	public Id() {
 	}
 	
+	public Id(IdKind kind) {
+		this.kind = kind;
+	}
+
 	public Id(String yourid, int idnumber) {
 		this.yourid = yourid;
 		this.idnumber = idnumber;
 	}
-		
+
 	public Id(String yourid, int idnumber, String idsite, String password) {
 		this.yourid = yourid;
 		this.idnumber = idnumber;
 		this.idsite = idsite;
 		this.password = password;
 	}
-	
+
+	public Id(IdKind kind, String yourid, int idnumber, String idsite, String password) {
+		this.kind = kind;
+		this.yourid = yourid;
+		this.idnumber = idnumber;
+		this.idsite = idsite;
+		this.password = password;
+	}
 	public IdKind getKind() {
 		return kind;
 	}
@@ -65,25 +76,41 @@ public class Id {
 	}
 
 	public void printInfo() {
-		System.out.println("yourid:" + yourid + " idsite:" + idsite + " password:" + password);
+		String skind = "none";
+		switch(this.kind) {
+		case Oftenuse :
+			skind = "Often.";
+			break;
+		case Sometimesuse :
+			skind = "Sometimes.";
+			break;
+		case Alwaysuse :		
+			skind = "Always.";
+			break;
+		case Neveruse :
+			skind = "Never.";
+			break;
+		default : 
+		}
+		System.out.println("kind:" + skind + "yourid:" + yourid + " idsite:" + idsite + " password:" + password);
 	}
-	
+
 	public void getUserInput(Scanner input) {
 		System.out.print("Id number:");
 		int idnumber = input.nextInt();
 		this.setIdnumber(idnumber);
-		
+
 		System.out.print("Your Id:");
 		String yourid = input.next();
 		this.setYourid(yourid);
-		
+
 		System.out.print("Id Site:");
 		String idsite = input.next();
 		this.setIdsite(idsite);
-		
+
 		System.out.print("Id password:");
 		String password = input.next();
 		this.setPassword(password);
-		
+
 	}
 }

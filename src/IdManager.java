@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import id.Id;
+import id.IdKind;
+import id.OftenuseId;
 import id.SometimesuseId;
 
 public class IdManager {
@@ -15,18 +17,25 @@ public class IdManager {
 		int kind = 0;
 		Id id;
 		while (kind != 1 && kind != 2) {
-			System.out.print("1 for often use Id, ");
-			System.out.print("2 for sometimes use Id, ");
-			System.out.print("Select num for Id Kind between 1 and 2:");
+			System.out.println("1 for always use Id, ");
+			System.out.println("2 for sometimes use Id, ");
+			System.out.println("3 for often use Id, ");
+			System.out.print("Select num 1, 2, or 3 for Id Kind:");
 			kind = input.nextInt();
 			if (kind == 1) {
-				id = new Id();
+				id = new Id(IdKind.Alwaysuse);
 				id.getUserInput(input);
 				ids.add(id);
 				break;
 			}
 			else if (kind == 2) {
-				id = new SometimesuseId();	
+				id = new SometimesuseId(IdKind.Sometimesuse);	
+				id.getUserInput(input);
+				ids.add(id);
+				break;
+			}
+			else if (kind == 3) {
+				id = new OftenuseId(IdKind.Oftenuse);	
 				id.getUserInput(input);
 				ids.add(id);
 				break;
