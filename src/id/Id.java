@@ -2,7 +2,7 @@ package id;
 
 import java.util.Scanner;
 
-public class Id {
+public abstract class Id implements IdInput {
 	protected IdKind kind = IdKind.Oftenuse;
 	protected String yourid;
 	protected int idnumber;
@@ -75,7 +75,33 @@ public class Id {
 		this.password = password;
 	}
 
-	public void printInfo() {
+	public abstract void printInfo();
+	
+	public void setYourId(Scanner input) {
+		System.out.print("Your Id:");
+		String yourid = input.next();
+		this.setYourid(yourid);
+	}
+
+	public void setIdSite(Scanner input) {
+		System.out.print("Id Site:");
+		String idsite = input.next();
+		this.setIdsite(idsite);
+	}
+
+	public void setIdPassword(Scanner input) {
+		System.out.print("Id password:");
+		String password = input.next();
+		this.setPassword(password);
+	}
+
+	public void setIdNumber(Scanner input) {
+		System.out.print("Id number:");
+		int idnumber1 = input.nextInt();
+		this.setIdnumber(idnumber1);
+	}
+	
+	public String getKindString() {
 		String skind = "none";
 		switch(this.kind) {
 		case Oftenuse :
@@ -92,25 +118,6 @@ public class Id {
 			break;
 		default : 
 		}
-		System.out.println("kind:" + skind + "yourid:" + yourid + " idsite:" + idsite + " password:" + password);
-	}
-
-	public void getUserInput(Scanner input) {
-		System.out.print("Id number:");
-		int idnumber = input.nextInt();
-		this.setIdnumber(idnumber);
-
-		System.out.print("Your Id:");
-		String yourid = input.next();
-		this.setYourid(yourid);
-
-		System.out.print("Id Site:");
-		String idsite = input.next();
-		this.setIdsite(idsite);
-
-		System.out.print("Id password:");
-		String password = input.next();
-		this.setPassword(password);
-
+		return skind;
 	}
 }

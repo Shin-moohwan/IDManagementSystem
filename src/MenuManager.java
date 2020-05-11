@@ -4,32 +4,38 @@ public class MenuManager{
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		IdManager idmanager = new IdManager(input);
-		
+
 		int num = -1;
 		while (num != 5) {
-			System.out.println("### Id Management System Menu ###");
-			System.out.println("1. Add Id");
-			System.out.println("2. Delete Id");
-			System.out.println("3. Edit Id");
-			System.out.println("4. View Ids");
-			System.out.println("5. Exit");
-			System.out.println("Select one number between 1 - 5:");
+			showMenu();
 			num = input.nextInt();
-			if (num == 1) {
+			switch(num) {
+			case 1:
 				idmanager.addId();
-			}
-			else if (num == 2) {
+				break;
+			case 2:
 				idmanager.deleteId();
-			}
-			else if (num == 3) {
+				break;
+			case 3:
 				idmanager.editId();
-			}
-			else if (num == 4) {
+				break;
+			case 4:
 				idmanager.viewIds();
-			}
-			else {
+				break;
+			default:
 				continue;
 			}
 		}
+	}
+
+
+	public static void showMenu() {
+		System.out.println("### Id Management System Menu ###");
+		System.out.println("1. Add Id");
+		System.out.println("2. Delete Id");
+		System.out.println("3. Edit Id");
+		System.out.println("4. View Ids");
+		System.out.println("5. Exit");
+		System.out.println("Select one number between 1 - 5:");
 	}
 }
