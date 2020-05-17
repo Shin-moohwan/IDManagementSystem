@@ -2,6 +2,8 @@ package id;
 
 import java.util.Scanner;
 
+import exception.IdsiteFormException;
+
 public abstract class Id implements IdInput {
 	protected IdKind kind = IdKind.Oftenuse;
 	protected String yourid;
@@ -11,7 +13,7 @@ public abstract class Id implements IdInput {
 
 	public Id() {
 	}
-	
+
 	public Id(IdKind kind) {
 		this.kind = kind;
 	}
@@ -63,7 +65,10 @@ public abstract class Id implements IdInput {
 		return idsite;
 	}
 
-	public void setIdsite(String idsite) {
+	public void setIdsite(String idsite) throws IdsiteFormException {
+		if (!idsite.contains("@") && !idsite.equals("")) {
+			throw new IdsiteFormException();
+		}
 		this.idsite = idsite;
 	}
 
@@ -76,7 +81,7 @@ public abstract class Id implements IdInput {
 	}
 
 	public abstract void printInfo();
-	
+
 	public void setYourId(Scanner input) {
 		System.out.print("Your Id:");
 		String yourid = input.next();
@@ -84,9 +89,16 @@ public abstract class Id implements IdInput {
 	}
 
 	public void setIdSite(Scanner input) {
-		System.out.print("Id Site:");
-		String idsite = input.next();
-		this.setIdsite(idsite);
+		String idsite = "";
+		while (!idsite.contains("@")) {
+			System.out.print("Id Site:");
+			idsite = input.next();
+			try {
+				this.setIdsite(idsite);
+			} catch (IdsiteFormException e) {
+				System.out.println("Incorrect Idsite Format. put the Idsite that contains @");
+			}
+		}
 	}
 
 	public void setIdPassword(Scanner input) {
@@ -100,7 +112,7 @@ public abstract class Id implements IdInput {
 		int idnumber1 = input.nextInt();
 		this.setIdnumber(idnumber1);
 	}
-	
+
 	public String getKindString() {
 		String skind = "none";
 		switch(this.kind) {

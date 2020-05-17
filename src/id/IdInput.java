@@ -2,13 +2,15 @@ package id;
 
 import java.util.Scanner;
 
+import exception.IdsiteFormException;
+
 public interface IdInput {
 
 	public int getIdnumber();
 	
 	public void setYourid(String yourid);
 	
-	public void setIdsite(String idsite);
+	public void setIdsite(String idsite) throws IdsiteFormException;
 	
 	public void setPassword(String password);
 	

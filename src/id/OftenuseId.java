@@ -2,6 +2,8 @@ package id;
 
 import java.util.Scanner;
 
+import exception.IdsiteFormException;
+
 public class OftenuseId extends UsuallyId {
 
 	protected String secondyourid;
@@ -26,15 +28,20 @@ public class OftenuseId extends UsuallyId {
 		{
 			System.out.print("Do you have a second idsite? (Y/N)");
 			answer = input.next().charAt(0);
-			if (answer == 'y' || answer == 'Y') {
-				setIdSite(input);
-				break;
+			try {
+				if (answer == 'y' || answer == 'Y') {
+					setIdSite(input);
+					break;
+				}
+				else if (answer == 'n' || answer == 'N') {
+					this.setIdsite("");
+					break;
+				}
+				else {
+				}
 			}
-			else if (answer == 'n' || answer == 'N') {
-				this.setIdsite("");
-				break;
-			}
-			else {
+			catch(IdsiteFormException e) {
+				System.out.println("Incorrect Idsite Format. put the Idsite that contains '@'");
 			}
 		}
 	}

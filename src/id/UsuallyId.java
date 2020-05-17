@@ -2,6 +2,8 @@ package id;
 
 import java.util.Scanner;
 
+import exception.IdsiteFormException;
+
 public abstract class UsuallyId extends Id {
 	
 	public UsuallyId(IdKind kind) {
@@ -23,6 +25,7 @@ public abstract class UsuallyId extends Id {
 		{
 			System.out.print("Do you have an id site? (Y/N)");
 			answer = input.next().charAt(0);
+			try {
 			if (answer == 'y' || answer == 'Y') {
 				System.out.print("Id Site:");
 				String idsite = input.next();
@@ -37,7 +40,10 @@ public abstract class UsuallyId extends Id {
 
 			}
 		}
+		catch(IdsiteFormException e) {
+			System.out.println("Incorrect Idsite Format. put the Idsite that contains '@'");
+		}
 	}
-
+	}
 
 }

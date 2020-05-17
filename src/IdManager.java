@@ -1,6 +1,6 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
-
 import id.AlwaysuseId;
 import id.Id;
 import id.IdKind;
@@ -19,34 +19,44 @@ public class IdManager {
 		int kind = 0;
 		IdInput idInput;
 		while (kind != 1 && kind != 2) {
-			System.out.println("1 for always use Id, ");
-			System.out.println("2 for sometimes use Id, ");
-			System.out.println("3 for often use Id, ");
-			System.out.print("Select num 1, 2, or 3 for Id Kind:");
-			kind = input.nextInt();
-			if (kind == 1) {
-				idInput = new AlwaysuseId(IdKind.Alwaysuse);
-				idInput.getUserInput(input);
-				ids.add(idInput);
-				break;
+			try {
+				System.out.println("1 for always use Id, ");
+				System.out.println("2 for sometimes use Id, ");
+				System.out.println("3 for often use Id, ");
+				System.out.print("Select num 1, 2, or 3 for Id Kind:");
+				kind = input.nextInt();
+				if (kind == 1) {
+					idInput = new AlwaysuseId(IdKind.Alwaysuse);
+					idInput.getUserInput(input);
+					ids.add(idInput);
+					break;
+				}
+				else if (kind == 2) {
+					idInput = new SometimesuseId(IdKind.Sometimesuse);	
+					idInput.getUserInput(input);
+					ids.add(idInput);
+					break;
+				}
+				else if (kind == 3) {
+					idInput = new OftenuseId(IdKind.Oftenuse);	
+					idInput.getUserInput(input);
+					ids.add(idInput);
+					break;
+				}
+				else {
+					System.out.print("Select num for Id Kind between 1 and 2:");
+				}
 			}
-			else if (kind == 2) {
-				idInput = new SometimesuseId(IdKind.Sometimesuse);	
-				idInput.getUserInput(input);
-				ids.add(idInput);
-				break;
-			}
-			else if (kind == 3) {
-				idInput = new OftenuseId(IdKind.Oftenuse);	
-				idInput.getUserInput(input);
-				ids.add(idInput);
-				break;
-			}
-			else {
-				System.out.print("Select num for Id Kind between 1 and 2:");
+			catch(InputMismatchException e) {
+				System.out.println("Pleas put an integer between 1 and 3!");
+				if (input.hasNext()) {
+					input.next();
+				}
+				kind = -1;
 			}
 		}
 	}
+
 
 	public void deleteId() {
 		System.out.print("Your Id number:");
@@ -54,7 +64,7 @@ public class IdManager {
 		int index = findIndex(idnumber);
 		removefromIds(index, idnumber);
 	}
-	
+
 	public int findIndex(int idnumber) {
 		int index = -1;
 		for (int i = 0; i<ids.size(); i++) {
