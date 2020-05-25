@@ -1,10 +1,16 @@
 package id;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import exception.IdsiteFormException;
 
-public abstract class Id implements IdInput {
+public abstract class Id implements IdInput, Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7947203192621171679L;
+	
 	protected IdKind kind = IdKind.Oftenuse;
 	protected String yourid;
 	protected int idnumber;

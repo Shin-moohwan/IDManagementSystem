@@ -16,7 +16,7 @@ public abstract class UsuallyId extends Id {
 	@Override
 	public void printInfo() {
 		String skind = getKindString();
-		System.out.println("kind:" + skind + "yourid:" + yourid + " idsite:" + idsite + " password:" + password);
+		System.out.println("kind:" + skind + " yourid:" + yourid + " idsite:" + idsite + " password:" + password);
 	}
 
 	public void setIdSiteWithYN(Scanner input) {

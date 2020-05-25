@@ -48,6 +48,6 @@ public class OftenuseId extends UsuallyId {
 
 	public void printInfo() {
 		String skind = getKindString();
-		System.out.println("kind:" + skind + "yourid:" + yourid + " idsite:" + idsite + " password:" + password + "secondyourid:" + yourid + " secondpassword:" + password);
+		System.out.println("kind:" + skind + " yourid:" + yourid + " idsite:" + idsite + " password:" + password + "secondyourid:" + yourid + " secondpassword:" + password);
 	}
 }

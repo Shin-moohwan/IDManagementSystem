@@ -1,0 +1,2 @@
+5월 25, 2020 12:12:58 오후 log.EventLogger log
+정보: view a list of id
