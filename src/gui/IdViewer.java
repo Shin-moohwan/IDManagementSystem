@@ -1,13 +1,18 @@
 package gui;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class IdViewer extends JFrame {
+public class IdViewer extends JPanel {
+	
+	WindowFrame frame;
 
-	public IdViewer() {
+	public IdViewer(WindowFrame frame) {
+		this.frame = frame;
+		
 		DefaultTableModel model = new DefaultTableModel();
 		model.addColumn("Id");
 		model.addColumn("Site");
@@ -18,11 +23,6 @@ public class IdViewer extends JFrame {
 		JScrollPane sp = new JScrollPane(table);
 		
 		this.add(sp);
-		
-		this.setSize(300, 300);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-
-		this.setVisible(true);
 	}
 
 }

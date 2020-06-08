@@ -7,9 +7,13 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
-public class IdAdder extends JFrame {
+public class IdAdder extends JPanel {
 	
-	public IdAdder() {
+	WindowFrame frame;
+	
+	public IdAdder(WindowFrame frame) {
+		this.frame = frame;
+		
 		JPanel panel = new JPanel();
 		panel.setLayout(new SpringLayout());
 		
@@ -42,9 +46,7 @@ public class IdAdder extends JFrame {
 		
 		SpringUtilities.makeCompactGrid(panel, 5, 2, 6, 6, 6, 6);
 		
-		this.setSize(300, 300);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setContentPane(panel);
+		this.add(panel);
 		this.setVisible(true);
 		
 	}
