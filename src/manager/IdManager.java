@@ -1,8 +1,10 @@
+package manager;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import id.AlwaysuseId;
+import id.Id;
 import id.IdInput;
 import id.IdKind;
 import id.OftenuseId;
@@ -136,6 +138,13 @@ public class IdManager implements Serializable {
 		}
 	}
 
+	public int size() {
+		return ids.size();
+	}
+	
+	public IdInput get(int index) {
+		return (Id) ids.get(index);
+	}
 
 	public void showEditMenu() {
 		System.out.println("## Id Info Edit Menu ##");

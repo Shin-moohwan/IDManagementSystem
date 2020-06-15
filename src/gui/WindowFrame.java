@@ -3,23 +3,32 @@ package gui;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import manager.IdManager;
+
 public class WindowFrame extends JFrame {
 	
 	WindowFrame frame;
+	
+	IdManager idmanager;
 	
 	MenuSelection menuselection;
 	IdAdder idadder;
 	IdViewer idviewer;
 	
-	public WindowFrame() {
-		this.menuselection = new MenuSelection(this);
-		this.idadder = new IdAdder(this);
-		this.idviewer = new IdViewer(this);
-		
+	public WindowFrame(IdManager idmanager) {
 		this.setSize(500, 300);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setTitle("My Frame");
 		
-		this.setupPanel(menuselection);
+		this.idmanager = idmanager;
+		menuselection = new MenuSelection(this);
+		idadder = new IdAdder(this);
+		idviewer = new IdViewer(this, this.idmanager);
+
+		
+
+		
+		this.add(menuselection);
 		
 		this.setVisible(true);
 	}

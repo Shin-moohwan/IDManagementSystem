@@ -10,6 +10,12 @@ public interface IdInput {
 	
 	public void setYourid(String yourid);
 	
+	public String getYourid();
+	
+	public String getIdsite();
+	
+	public String getPassword();
+	
 	public void setIdsite(String idsite) throws IdsiteFormException;
 	
 	public void setPassword(String password);
