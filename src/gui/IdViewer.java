@@ -39,6 +39,7 @@ public class IdViewer extends JPanel {
 			model.addRow(row);
 		}
 		
+		
 		JTable table = new JTable(model);
 		JScrollPane sp = new JScrollPane(table);
 		
