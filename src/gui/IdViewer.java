@@ -27,14 +27,14 @@ public class IdViewer extends JPanel {
 		model.addColumn("Id");
 		model.addColumn("Site");
 		model.addColumn("Idnumber");
-		model.addColumn("Contact Info");
+		model.addColumn("Password");
 		
 		for (int i=0; i < idmanager.size(); i++) {
 			Vector row = new Vector();
 			IdInput ii = idmanager.get(i);
-			row.add(ii.getIdnumber());
 			row.add(ii.getYourid());
 			row.add(ii.getIdsite());
+			row.add(ii.getIdnumber());
 			row.add(ii.getPassword());
 			model.addRow(row);
 		}

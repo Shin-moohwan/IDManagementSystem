@@ -25,9 +25,6 @@ public class WindowFrame extends JFrame {
 		idadder = new IdAdder(this);
 		idviewer = new IdViewer(this, this.idmanager);
 
-		
-
-		
 		this.add(menuselection);
 		
 		this.setVisible(true);
@@ -63,7 +60,4 @@ public class WindowFrame extends JFrame {
 	public void setIdviewer(IdViewer idviewer) {
 		this.idviewer = idviewer;
 	}
-
-
-
 }
